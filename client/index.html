@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <script src="adapter-latest.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="three.js"></script>
+        <script src="Detector.js"></script>
+        <script src="OrbitControls.js"></script>
+        <script src="OBJLoader.js"></script>
+        <script src="MTLLoader.js"></script>
+        <script src="tracking-min.js"></script>
+        <script src="jquery-3.1.0.js"></script>
+
+    </head>
+
+    <body>
+        <!-- <div id="tip1" class="tooltip"><label>This is my heart</label></div> -->
+        <div id="3dContainer" style="position: absolute;z-index: 3;" class="3dContainer"></div>
+        <div id="videoContainer">
+
+
+            <video id="localVideo" autoplay muted class="localVideo"></video>
+            <video id="remoteVideo" autoplay style="width:20%;position: absolute;"></video>
+
+            <br />
+
+            <input type="button" id="start" onclick="start(true)" value="Start Video"></input>
+        </div>
+
+        <script src="webrtc.js"></script>
+        <script src="3dmodel.js"></script>
+        <script src="3dmodel2.js"></script>
+        <script src="3dmodel3.js"></script>
+        <script src="3dmodel4.js"></script>
+        <script src="3dmodel5.js"></script>
+        <script src="3dmodel6.js"></script>
+        <script src="color-tracker.js"></script>
+
+        
+        <script type="text/javascript">
+            pageReady();
+        </script>
+
+    </body>
+</html>
