@@ -38,7 +38,7 @@ function init() {
 	scene.add( directionalLight );
 
 
-	var extraLight = new THREE.DirectionalLight( 0xffffff );
+	var extraLight = new THREE.DirectionalLight( 0x78B0E9 );
 	extraLight.position.set( -1, -1, -1 );
 	scene.add( extraLight );
 
