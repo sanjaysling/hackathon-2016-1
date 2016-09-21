@@ -31,6 +31,9 @@ var rightAtriumBanner = null ;
 var rightVentricleBanner = null ;
 var pointer = null ;
 
+var threeDIconSelected = null ;
+var heartDisplaying = null ;
+
 colors.on('track', function(event) {
   if (event.data.length === 0) {
     // No colors were detected in this frame.
@@ -53,59 +56,79 @@ colors.on('track', function(event) {
 
 
           
-            if(currentX < 590 && currentX > 460 && currentY < 360 && currentY > 250){
+                        if(currentX < 590 && currentX > 460 && currentY < 360 && currentY > 250){
 
-              if(arotaBanner){
-                arotaBanner.remove();
+                          if(arotaBanner){
+                            arotaBanner.remove();
+                          }
+
+                          console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
+                          arotaBanner = showBanner("Aorta", currentX+350, currentY);
+
+                        }
+
+                        if(currentX < 700 && currentX > 600 && currentY < 510 && currentY > 410){
+
+                          if(leftAtriumBanner){
+                            leftAtriumBanner.remove();
+                          }
+
+                          console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
+                          leftAtriumBanner = showBanner("Left atrium", currentX+350, currentY);
+
+                        }
+
+                        if(currentX < 700 && currentX > 600 && currentY < 630 && currentY > 530){
+
+                          if(leftVentricleBanner){
+                            leftVentricleBanner.remove();
+                          }
+
+                          console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
+                          leftVentricleBanner = showBanner("Left Ventricle", currentX+350, currentY);
+
+                        }
+
+                        if(currentX < 590 && currentX > 490 && currentY < 510 && currentY > 410){
+
+                          if(rightAtriumBanner){
+                            rightAtriumBanner.remove();
+                          }
+
+                          console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
+                          rightAtriumBanner = showBanner("Right atrium", currentX-250, currentY);
+
+                        }
+
+                        if(currentX < 590 && currentX > 490 && currentY < 650 && currentY > 550){
+
+                          if(rightVentricleBanner){
+                            rightVentricleBanner.remove();
+                          }
+
+                          console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
+                          rightVentricleBanner = showBanner("Right Ventricle", currentX-250, currentY);
+
+                        }
+          }
+
+
+          // on 3d icon selected
+          if(currentX < 80 && currentY < 80){
+              if(!threeDIconSelected){
+                  console.log("3d icon selected");
+                  $('#3dicon').animate({width:600+'px'});
+                  threeDIconSelected = true ;
+                  $('#heartImg').show();
+                  $('#glassImg').show();
+                  $('#carImg').show();
               }
+          }
 
-              console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-              arotaBanner = showBanner("Aorta", currentX+350, currentY);
-
-            }
-
-            if(currentX < 700 && currentX > 600 && currentY < 510 && currentY > 410){
-
-              if(leftAtriumBanner){
-                leftAtriumBanner.remove();
-              }
-
-              console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-              leftAtriumBanner = showBanner("Left atrium", currentX+350, currentY);
-
-            }
-
-            if(currentX < 700 && currentX > 600 && currentY < 630 && currentY > 530){
-
-              if(leftVentricleBanner){
-                leftVentricleBanner.remove();
-              }
-
-              console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-              leftVentricleBanner = showBanner("Left Ventricle", currentX+350, currentY);
-
-            }
-
-            if(currentX < 590 && currentX > 490 && currentY < 510 && currentY > 410){
-
-              if(rightAtriumBanner){
-                rightAtriumBanner.remove();
-              }
-
-              console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-              rightAtriumBanner = showBanner("Right atrium", currentX-250, currentY);
-
-            }
-
-            if(currentX < 590 && currentX > 490 && currentY < 650 && currentY > 550){
-
-              if(rightVentricleBanner){
-                rightVentricleBanner.remove();
-              }
-
-              console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-              rightVentricleBanner = showBanner("Right Ventricle", currentX-250, currentY);
-
+          if(currentX > 140 && currentX < 240 && currentY < 100){
+            if(threeDIconSelected && !heartDisplaying){
+              console.log("Showing heart");
+              heartDisplaying = true ;
             }
           }
 

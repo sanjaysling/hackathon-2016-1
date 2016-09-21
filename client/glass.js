@@ -73,14 +73,9 @@ function init() {
 			if ( child instanceof THREE.Mesh ) {
 				child.material.map = texture;
 				child.scale.set(15,15,15);
-				// child.scale.set(100,100,100);
 			}
 		} );
 		object.position.y = -95;
-
-	    // object.position.x = 0;
-	    // object.position.y = 0;
-	    // object.position.z = 0;
 
 		scene.add( object );
 	}, onProgress, onError );

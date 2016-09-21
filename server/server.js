@@ -77,6 +77,14 @@ var handleRequest = function(request, response) {
         response.end(fs.readFileSync('client/assets/glass.obj'));
     } else if(request.url == '/assets/glass-texture.jpg') {
         response.end(fs.readFileSync('client/assets/glass-texture.jpg'));
+    } else if(request.url == '/3d.png') {
+        response.end(fs.readFileSync('client/3d.png'));
+    } else if(request.url == '/heart.png') {
+        response.end(fs.readFileSync('client/heart.png'));
+    } else if(request.url == '/car.png') {
+        response.end(fs.readFileSync('client/car.png'));
+    } else if(request.url == '/glass.jpg') {
+        response.end(fs.readFileSync('client/glass.jpg'));
     }
 
 
