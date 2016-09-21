@@ -1,0 +1,22 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "WebRTC Example ============== 1. npm install 2. node server/server.js 3. localhost:8443",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjaysling/hackathon-2016-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanjaysling/hackathon-2016-1/issues"
+  },
+  "homepage": "https://github.com/sanjaysling/hackathon-2016-1#readme",
+  "dependencies": {
+    "ws": "^1.1.1"
+  }
+}
