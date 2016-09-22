@@ -32,7 +32,9 @@ var rightVentricleBanner = null ;
 var pointer = null ;
 
 var threeDIconSelected = null ;
-var heartDisplaying = null ;
+var heartLoaded = null ;
+var glassLoaded = null ;
+var carLoaded = null ;
 
 colors.on('track', function(event) {
   if (event.data.length === 0) {
@@ -117,18 +119,53 @@ colors.on('track', function(event) {
           if(currentX < 80 && currentY < 80){
               if(!threeDIconSelected){
                   console.log("3d icon selected");
-                  $('#3dicon').animate({width:600+'px'});
                   threeDIconSelected = true ;
-                  $('#heartImg').show();
-                  $('#glassImg').show();
-                  $('#carImg').show();
+                  expand3dBanner();
               }
           }
 
           if(currentX > 140 && currentX < 240 && currentY < 100){
-            if(threeDIconSelected && !heartDisplaying){
+            if(threeDIconSelected && !heartLoaded){
               console.log("Showing heart");
-              heartDisplaying = true ;
+              heartLoaded = true ;
+              glassLoaded = false ;
+              carLoaded = false ;
+              unloadGlass();
+              unloadCar();
+              loadHeart();
+              compress3dBanner();
+              threeDIconSelected = false ;
+            }
+          }
+
+          if(currentX > 300 && currentX < 400 && currentY < 100){
+            if(threeDIconSelected && !glassLoaded){
+              console.log("Showing glass");
+              heartLoaded = false ;
+              glassLoaded = true ;
+              carLoaded = false ;
+              unloadHeart();
+              unloadCar();
+              loadGlass();
+
+              compress3dBanner();
+              threeDIconSelected = false ;
+            }
+          }
+
+          if(currentX > 460 && currentX < 560 && currentY < 100){
+            if(threeDIconSelected && !carLoaded){
+              console.log("Showing glass");
+              heartLoaded = false ;
+              glassLoaded = false ;
+              carLoaded = true ;
+
+              unloadHeart();
+              unloadGlass();
+              loadCar();
+
+              compress3dBanner();
+              threeDIconSelected = false ;
             }
           }
 
@@ -188,5 +225,40 @@ function showBanner(text, x, y){
   $banner.delay(2000).fadeOut(300);
 
   return $banner ;
+}
+
+function expand3dBanner(){
+  $('#3dicon').animate({width:600+'px'});
+  
+  $('#heartImg').show();
+  $('#glassImg').show();
+  $('#carImg').show();
+              
+}
+function compress3dBanner(){
+  $('#heartImg').hide();
+  $('#glassImg').hide();
+  $('#carImg').hide();
+  $('#3dicon').animate({width:100+'px'});
+}
+
+function loadHeart(){
+  console.log("loading heart ");
+}
+function unloadHeart(){
+  console.log("Unloading heart");
+}
+
+function loadGlass(){
+  console.log("loading glass");
+}
+function unloadGlass(){
+  console.log("unloading glass");
+}
+function loadCar(){
+  console.log("loading car");
+}
+function unloadCar(){
+  console.log("unloading car");
 }
 
