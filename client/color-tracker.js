@@ -65,7 +65,7 @@ colors.on('track', function(event) {
                           }
 
                           console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-                          arotaBanner = showBanner("Aorta", currentX+350, currentY);
+                          arotaBanner = showBanner("Aorta", currentX+250, currentY);
 
                         }
 
@@ -76,7 +76,7 @@ colors.on('track', function(event) {
                           }
 
                           console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-                          leftAtriumBanner = showBanner("Left atrium", currentX+350, currentY);
+                          leftAtriumBanner = showBanner("Left atrium", currentX+250, currentY);
 
                         }
 
@@ -87,7 +87,7 @@ colors.on('track', function(event) {
                           }
 
                           console.log("showing banner currentX    "+currentX+"  currentY    "+currentY);
-                          leftVentricleBanner = showBanner("Left Ventricle", currentX+350, currentY);
+                          leftVentricleBanner = showBanner("Left Ventricle", currentX+250, currentY);
 
                         }
 
@@ -168,21 +168,7 @@ colors.on('track', function(event) {
               threeDIconSelected = false ;
             }
           }
-          if(currentX > 460 && currentX < 560 && currentY < 100){
-            if(threeDIconSelected && !carLoaded){
-              console.log("Showing glass");
-              heartLoaded = false ;
-              glassLoaded = false ;
-              carLoaded = false ;
-
-              unloadHeart();
-              unloadGlass();
-              unloadCar();
-
-              compress3dBanner();
-              threeDIconSelected = false ;
-            }
-          }
+          
 
           if(currentX > 620 && currentX < 720 && currentY < 100){
             if(threeDIconSelected ){
@@ -240,32 +226,9 @@ colors.on('track', function(event) {
 tracking.track('#localVideo', colors);
 
 
-function connectLine(div1, div2, color, thickness) {
-    var off1 = getOffset(div1);
-    var off2 = getOffset(div2);
-    // bottom right
-    var x1 = off1.left + off1.width;
-    var y1 = off1.top + off1.height;
-    // top right
-    var x2 = off2.left + off2.width;
-    var y2 = off2.top;
-    // distance
-    var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
-    // center
-    var cx = ((x1 + x2) / 2) - (length / 2);
-    var cy = ((y1 + y2) / 2) - (thickness / 2);
-    // angle
-    var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
-    // make hr
-    var htmlLine = "<div style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);' />";
-    //
-    alert(htmlLine);
-    document.body.innerHTML += htmlLine; 
-}
-
 function showPointer(x,y){
-  var $pointer = $('<div class="pointer"><label> x: '+x+', y: '+y+'</label></div>').appendTo('body');
-  // var $pointer = $('<div class="pointer"><label></label></div>').appendTo('body');
+  // var $pointer = $('<div class="pointer"><label> x: '+x+', y: '+y+'</label></div>').appendTo('body');
+  var $pointer = $('<div class="pointer"><label></label></div>').appendTo('body');
   $pointer.attr('style', 'top: '+(y+0)+'px; left: '+(x+160)+'px;');
   $pointer.delay(1000).fadeOut(300);
 
@@ -275,11 +238,22 @@ function showPointer(x,y){
 
 function showBanner(text, x, y){
 
-  var $banner = $('<div class="tooltip"><label>'+text+'</label></div>').appendTo('body');
-  $banner.attr('style', 'top: '+y+'px; left: '+x+'px;');
-  $banner.delay(2000).fadeOut(300);
+  if(x < 641){
+      var $banner = $('<div id="annotateLeft" class="annotate" style="display:none"><div class="annotateTipLeft"><label>'+text+'</label></div><div class="annotateLineLeft"></div><div class="annotateCircleLeft"></div></div>').appendTo('body');
 
-  return $banner ;
+      $banner.attr('style', 'top: '+y+'px; left: '+x+'px;');
+      $banner.delay(2000).fadeOut(300);
+
+      return $banner ;
+  }else{
+    var $banner = $('<div id="annotateRight" class="annotate" style="display:none"><div class="annotateTipRight"><label>'+text+'</label></div><div class="annotateLineRight"></div><div class="annotateCircleRight"></div></div>').appendTo('body');
+
+      $banner.attr('style', 'top: '+y+'px; left: '+x+'px;');
+      $banner.delay(2000).fadeOut(300);
+
+      return $banner ;
+  }
+
 }
 
 function expand3dBanner(){

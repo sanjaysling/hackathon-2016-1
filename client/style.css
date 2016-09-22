@@ -46,20 +46,28 @@ a {
     position: absolute;
     height: 200px;
     width: 300px;
-    background: #FFF;
-    z-index: 99; 
+    /* background: #FFF; */
+    z-index: 15;
 }
-.annotateCircle {
+.annotateCircleLeft {
     height: 32px;
     width: 32px;
     border-radius: 50%;
-    border: 3px solid red;
+    border: 3px solid white;
+    position: absolute;
+    left: 418px;
+    top: 18px;
 
 }
-.annotateLine {
-    border: 1px solid white;
+.annotateLineLeft {
+    border: 1px solid #ffffff;
+    position: absolute;
+    top: 35px;
+    left: 325px;
+    width: 91px;
+    z-index: 99;
 }
-.annotateTip {
+.annotateTipLeft {
     position: relative;
     z-index: 5;
     background: rgba(69, 145, 216, 0.66);
@@ -72,8 +80,44 @@ a {
     color: white;
     font-family: monospace;
     text-align: center;
-    height: 100px;
+    height: 80px;
 }
+
+.annotateCircleRight {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 3px solid white;
+    position: absolute;
+    top: 18px;
+
+}
+.annotateLineRight {
+    border: 1px solid #ffffff;
+    position: absolute;
+    top: 35px;
+    left: 36px;
+    width: 91px;
+    z-index: 99;
+}
+.annotateTipRight {
+    position: relative;
+    z-index: 5;
+    background: rgba(69, 145, 216, 0.66);
+    padding: 10px;
+    border-radius: 7px;
+    border-color: #5184a9;
+    border: 3px solid;
+    width: 300px;
+    font-size: 26px;
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    height: 80px;
+    left: 129px;
+}
+
+
 .tooltip {
     position: absolute;
     z-index: 5;
@@ -89,12 +133,18 @@ a {
     text-align: center;
 }
 .pointer {
-    position: absolute;
+    /*position: absolute;
     z-index: 12;
     padding: 20px;
     border-radius: 68%;
     border: 3px solid;
-    color: white;
+    color: white;*/
+
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 3px solid white;
+    position: absolute;
 }
 .upperMenuItem {
     width: 100px ;

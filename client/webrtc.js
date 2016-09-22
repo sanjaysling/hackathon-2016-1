@@ -9,6 +9,8 @@ var isMovingUp ;
 var isMovingDown ;
 
 var is3dModelHeart ;
+var is3dModelGlass ;
+var is3dModelCar ;
 
 var peerConnectionConfig = {
     'iceServers': [
