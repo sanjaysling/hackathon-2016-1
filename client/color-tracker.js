@@ -168,6 +168,37 @@ colors.on('track', function(event) {
               threeDIconSelected = false ;
             }
           }
+          if(currentX > 460 && currentX < 560 && currentY < 100){
+            if(threeDIconSelected && !carLoaded){
+              console.log("Showing glass");
+              heartLoaded = false ;
+              glassLoaded = false ;
+              carLoaded = false ;
+
+              unloadHeart();
+              unloadGlass();
+              unloadCar();
+
+              compress3dBanner();
+              threeDIconSelected = false ;
+            }
+          }
+
+          if(currentX > 620 && currentX < 720 && currentY < 100){
+            if(threeDIconSelected ){
+              console.log("Closing 3d banner");
+              heartLoaded = false ;
+              glassLoaded = false ;
+              carLoaded = false ;
+
+              unloadHeart();
+              unloadGlass();
+              unloadCar();
+
+              compress3dBanner();
+              threeDIconSelected = false ;
+            }
+          }
 
 
           // ////////////
@@ -185,7 +216,7 @@ colors.on('track', function(event) {
             }
           }
 
-          if(currentY > 400 && currentY < 700 && currentX > 0 && currentX < 50){
+          if(currentY > 100 && currentY < 700 && currentX > 0 && currentX < 50){
               if((currentY < previousY) && (previousY - currentY) > 10){
                 console.log("Moving top ");
                 isMovingUp = true ;
@@ -208,10 +239,34 @@ colors.on('track', function(event) {
 
 tracking.track('#localVideo', colors);
 
+
+function connectLine(div1, div2, color, thickness) {
+    var off1 = getOffset(div1);
+    var off2 = getOffset(div2);
+    // bottom right
+    var x1 = off1.left + off1.width;
+    var y1 = off1.top + off1.height;
+    // top right
+    var x2 = off2.left + off2.width;
+    var y2 = off2.top;
+    // distance
+    var length = Math.sqrt(((x2-x1) * (x2-x1)) + ((y2-y1) * (y2-y1)));
+    // center
+    var cx = ((x1 + x2) / 2) - (length / 2);
+    var cy = ((y1 + y2) / 2) - (thickness / 2);
+    // angle
+    var angle = Math.atan2((y1-y2),(x1-x2))*(180/Math.PI);
+    // make hr
+    var htmlLine = "<div style='padding:0px; margin:0px; height:" + thickness + "px; background-color:" + color + "; line-height:1px; position:absolute; left:" + cx + "px; top:" + cy + "px; width:" + length + "px; -moz-transform:rotate(" + angle + "deg); -webkit-transform:rotate(" + angle + "deg); -o-transform:rotate(" + angle + "deg); -ms-transform:rotate(" + angle + "deg); transform:rotate(" + angle + "deg);' />";
+    //
+    alert(htmlLine);
+    document.body.innerHTML += htmlLine; 
+}
+
 function showPointer(x,y){
   var $pointer = $('<div class="pointer"><label> x: '+x+', y: '+y+'</label></div>').appendTo('body');
   // var $pointer = $('<div class="pointer"><label></label></div>').appendTo('body');
-  $pointer.attr('style', 'top: '+(y+20)+'px; left: '+(x+180)+'px;');
+  $pointer.attr('style', 'top: '+(y+0)+'px; left: '+(x+160)+'px;');
   $pointer.delay(1000).fadeOut(300);
 
   return $pointer ;
@@ -228,37 +283,55 @@ function showBanner(text, x, y){
 }
 
 function expand3dBanner(){
-  $('#3dicon').animate({width:600+'px'});
+  $('#3dicon').animate({width:760+'px'});
   
   $('#heartImg').show();
   $('#glassImg').show();
   $('#carImg').show();
+  $('#closeImg').show();
               
 }
 function compress3dBanner(){
   $('#heartImg').hide();
   $('#glassImg').hide();
   $('#carImg').hide();
+  $('#closeImg').hide();
   $('#3dicon').animate({width:100+'px'});
 }
 
 function loadHeart(){
   console.log("loading heart ");
+  loadModelHeart();
+  is3dModelHeart = true ;
 }
 function unloadHeart(){
   console.log("Unloading heart");
+  unloadModelHeart();
+  is3dModelHeart = false;
 }
 
 function loadGlass(){
   console.log("loading glass");
+  loadModelGlass();
+
+  is3dModelHeart = false;
 }
 function unloadGlass(){
   console.log("unloading glass");
+  unloadModelGlass();
+
+  is3dModelHeart = false;
 }
 function loadCar(){
   console.log("loading car");
+  loadModelCar();
+
+  is3dModelHeart = false;
 }
 function unloadCar(){
   console.log("unloading car");
+  unloadModelCar();
+
+  is3dModelHeart = false;
 }
 

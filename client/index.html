@@ -20,12 +20,25 @@
     </head>
 
     <body>
+        <!-- <div id="annotate" class="annotate">
+            <div class="annotateTip">
+            </div>
+            <div class="annotateLine">
+            </div>
+            <div class="annotateCircle">
+            </div>
 
-        <div id="3dicon" style="width: 100px; padding: 10px; border: solid 10px; border-color: rgba(35, 132, 232, 0.780392); border-radius: 25px; position: absolute; left: 160px;">
+        </div> -->
+        <div id="loadingText" class="loading" >
+            <span class="blink">Loading...</span>
+            <!-- <img src="spinner.gif"></img> -->
+        </div>
+        <div id="3dicon" style="width: 100px; padding: 10px; border: solid 10px; border-color: rgba(35, 132, 232, 0.780392); border-radius: 25px; position: absolute; left: 160px;background: rgba(29, 120, 222, 0.25);">
             <img src="3d.png" style="width: 100px;"></img>
             <img id="heartImg" src="heart.png" style="display:none" class="upperMenuItem"></img>
             <img id="glassImg" src="glass.jpg" style="display:none" class="upperMenuItem"></img>
             <img id="carImg" src="car.png" style="display:none" class="upperMenuItem"></img>
+            <img id="closeImg" src="close.png" style="display:none" class="upperMenuItem"></img>
         </div>
         <div id="3dContainer" style="position: absolute;z-index: 3;" ></div>
         <div id="videoContainer">
@@ -40,11 +53,12 @@
         </div>
 
         <script src="webrtc.js"></script>
-        <script src="car.js"></script>
+        <!--script src="car.js"></script>
         <script src="heart.js"></script>
-        <script src="glass.js"></script>
+        <script src="glass.js"></script-->
+        
+        <script src="ThreeDModelLoader.js"></script>
         <script src="color-tracker.js"></script>
-
         
         <script type="text/javascript">
             pageReady();

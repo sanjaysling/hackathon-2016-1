@@ -38,6 +38,9 @@ var handleRequest = function(request, response) {
     }else if(request.url == '/glass.js') {
         response.writeHead(200, {'Content-Type': 'application/javascript'});
         response.end(fs.readFileSync('client/glass.js'));
+    }else if(request.url == '/ThreeDModelLoader.js') {
+        response.writeHead(200, {'Content-Type': 'application/javascript'});
+        response.end(fs.readFileSync('client/ThreeDModelLoader.js'));
     } else if(request.url == '/three.js') {
         response.writeHead(200, {'Content-Type': 'application/javascript'});
         response.end(fs.readFileSync('client/three.js'));
@@ -85,6 +88,10 @@ var handleRequest = function(request, response) {
         response.end(fs.readFileSync('client/car.png'));
     } else if(request.url == '/glass.jpg') {
         response.end(fs.readFileSync('client/glass.jpg'));
+    } else if(request.url == '/close.png') {
+        response.end(fs.readFileSync('client/close.png'));
+    } else if(request.url == '/spinner.gif') {
+        response.end(fs.readFileSync('client/spinner.gif'));
     }
 
 

@@ -42,6 +42,38 @@ a {
     margin-left: 10%;
     /*-webkit-transform: rotateY(180deg);*/
 }
+.annotate {
+    position: absolute;
+    height: 200px;
+    width: 300px;
+    background: #FFF;
+    z-index: 99; 
+}
+.annotateCircle {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 3px solid red;
+
+}
+.annotateLine {
+    border: 1px solid white;
+}
+.annotateTip {
+    position: relative;
+    z-index: 5;
+    background: rgba(69, 145, 216, 0.66);
+    padding: 10px;
+    border-radius: 7px;
+    border-color: #5184a9;
+    border: 3px solid;
+    width: 300px;
+    font-size: 26px;
+    color: white;
+    font-family: monospace;
+    text-align: center;
+    height: 100px;
+}
 .tooltip {
     position: absolute;
     z-index: 5;
@@ -58,10 +90,10 @@ a {
 }
 .pointer {
     position: absolute;
-    z-index: 8;
+    z-index: 12;
     padding: 20px;
     border-radius: 68%;
-    border: 2px solid;
+    border: 3px solid;
     color: white;
 }
 .upperMenuItem {
@@ -70,5 +102,51 @@ a {
     margin-left: 30px;
     margin-right: 30px;
 }
-
+.loading {
+    z-index: 9;
+    position: absolute;
+    top: 44%;
+    left: 43%;
+    /* font-size: large; */
+    font-family: "open-sans-1", "open-sans-2", Helvetica, Arial, sans-serif;
+    font-size: 65px;
+    color: rgba(0, 180, 255, 0.83);
+}
+.blink {
+    -webkit-animation: blink .75s linear infinite;
+    -moz-animation: blink .75s linear infinite;
+    -ms-animation: blink .75s linear infinite;
+    -o-animation: blink .75s linear infinite;
+     animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
     
